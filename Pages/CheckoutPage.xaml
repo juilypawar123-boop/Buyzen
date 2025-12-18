@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Buyzen.Pages.CheckoutPage"
+             Title="Checkout"
+             BackgroundColor="#1E1E1E"
+             Padding="10">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="20">
+
+            <!-- Step 1: Address Selection -->
+            <Frame BackgroundColor="#2C2C2C" CornerRadius="16" Padding="15">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Select Address" FontAttributes="Bold" TextColor="White"/>
+                    <Picker x:Name="AddressPicker" Title="Choose Address" TextColor="White"/>
+                    <Button Text="Edit Address" BackgroundColor="#0078D4" TextColor="White" Clicked="OnEditAddressClicked"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Step 2: Delivery Method -->
+            <Frame BackgroundColor="#2C2C2C" CornerRadius="16" Padding="15">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Delivery Method" FontAttributes="Bold" TextColor="White"/>
+                    <Picker x:Name="DeliveryMethodPicker" Title="Select Delivery Method" TextColor="White"/>
+                    <Button Text="Change Delivery Option" BackgroundColor="#0078D4" TextColor="White" Clicked="OnChangeDeliveryClicked"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Step 3: Order Summary -->
+            <Frame BackgroundColor="#2C2C2C" CornerRadius="16" Padding="15">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Order Summary" FontAttributes="Bold" TextColor="White"/>
+
+                    <CollectionView x:Name="OrderItemsView" HeightRequest="200">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame BackgroundColor="#3A3A3A" CornerRadius="10" Padding="10" Margin="5">
+                                    <Label Text="{Binding}" TextColor="White"/>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+
+                    <Label x:Name="SubtotalLabel" TextColor="White" FontAttributes="Bold"/>
+                    <Label x:Name="TaxLabel" TextColor="White" FontAttributes="Bold"/>
+                    <Label x:Name="TotalLabel" TextColor="White" FontAttributes="Bold" FontSize="18"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Step 4: Actions -->
+            <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
+                <Button Text="Place Order" BackgroundColor="#28A745" TextColor="White" Clicked="OnPlaceOrderClicked"/>
+                <Button Text="Cancel Checkout" BackgroundColor="#DC3545" TextColor="White" Clicked="OnCancelCheckoutClicked"/>
+            </HorizontalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

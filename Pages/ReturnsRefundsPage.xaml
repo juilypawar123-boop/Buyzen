@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Buyzen.Pages.ReturnsRefundsPage"
+             Title="Returns &amp; Refunds"
+             BackgroundColor="#FFF8E1"
+             Padding="10">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="20">
+
+            <!-- Eligible Items -->
+            <Frame BackgroundColor="#FFECB3" CornerRadius="20" Padding="15">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Eligible Items for Return" FontAttributes="Bold" FontSize="18" TextColor="#BF360C"/>
+                    <CollectionView x:Name="EligibleItemsView" HeightRequest="200">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame BackgroundColor="#FFE082" CornerRadius="15" Padding="10" Margin="5">
+                                    <HorizontalStackLayout Spacing="10">
+                                        <Label Text="{Binding Name}" FontAttributes="Bold" TextColor="#3E2723"/>
+                                        <Label Text="{Binding Price, StringFormat='${0:F2}'}" TextColor="#4E342E"/>
+                                    </HorizontalStackLayout>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Return Reason -->
+            <Frame BackgroundColor="#FFCC80" CornerRadius="20" Padding="15">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Select Return Reason" FontAttributes="Bold" FontSize="16" TextColor="#E65100"/>
+                    <Picker x:Name="ReturnReasonPicker" Title="Choose reason" TextColor="#3E2723">
+                        <Picker.Items>
+                            <x:String>Damaged Item</x:String>
+                            <x:String>Wrong Item Delivered</x:String>
+                            <x:String>Not Satisfied</x:String>
+                            <x:String>Other</x:String>
+                        </Picker.Items>
+                    </Picker>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Refund Method -->
+            <Frame BackgroundColor="#FFE57F" CornerRadius="20" Padding="15">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Refund Method" FontAttributes="Bold" FontSize="16" TextColor="#F57F17"/>
+                    <Label x:Name="RefundMethodLabel" Text="Original Payment Method" FontAttributes="Italic" TextColor="#3E2723"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Policy Summary -->
+            <Frame BackgroundColor="#FFF59D" CornerRadius="20" Padding="15">
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Return Policy Summary" FontAttributes="Bold" FontSize="16" TextColor="#F9A825"/>
+                    <Label Text="Items must be returned within 30 days of purchase. Refunds processed within 5 business days." 
+                           TextColor="#3E2723" FontSize="14"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Action Buttons -->
+            <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
+                <Button Text="Request Return" BackgroundColor="#43A047" TextColor="White" Clicked="OnRequestReturnClicked"/>
+                <Button Text="Cancel Return" BackgroundColor="#E53935" TextColor="White" Clicked="OnCancelReturnClicked"/>
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
+                <Button Text="Track Refund" BackgroundColor="#1E88E5" TextColor="White" Clicked="OnTrackRefundClicked"/>
+                <Button Text="Upload Evidence" BackgroundColor="#8E24AA" TextColor="White" Clicked="OnUploadEvidenceClicked"/>
+            </HorizontalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

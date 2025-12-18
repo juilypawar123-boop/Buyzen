@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Buyzen.Pages.LoginPage"
+             Title="Buyzen Login"
+             BackgroundColor="#071227">
+
+    <Grid ColumnDefinitions="320,*,320" RowDefinitions="*" Padding="10">
+
+        <!-- Left Sidebar -->
+        <VerticalStackLayout Grid.Column="0" Spacing="15" Padding="10" BackgroundColor="Black">
+            <Label Text="Login" FontAttributes="Bold" FontSize="23" HorizontalOptions="Center" Margin="0,30,0,30" TextColor="Yellow" />
+            <Entry x:Name="EmailEntry" Placeholder="Email" Keyboard="Email" />
+            <Entry x:Name="PasswordEntry" Placeholder="Password" IsPassword="True" />
+            <Button Text="Login" Clicked="OnLoginClicked" />
+        </VerticalStackLayout>
+
+        <!-- Center Content -->
+        <ContentView x:Name="CenterContent" Grid.Column="1" BackgroundColor="#071227" Padding="10">
+            <Label Text="Please log in to access your account." VerticalOptions="Center" HorizontalOptions="Center" />
+        </ContentView>
+        
+        <!-- Center Contet -->
+        <ContentView Grid.Column="1" BackgroundColor="#071227" Padding="20">
+           <VerticalStackLayout
+              VerticalOptions="Start" HorizontalOptions="Center" Spacing="20" WidthRequest="300">
+
+                <Label Text="Admin Dashboard" FontAttributes="Bold" FontSize="32" HorizontalOptions="Center" Margin="0,20,0,20" TextColor="Yellow" />
+                <Button x:Name="ManagementButton" Text="Product Management" Clicked="OnProductManagementClicked" IsEnabled="False" BackgroundColor="DarkRed"/>
+                <Button x:Name="OrdermanagementButton" Text="Order Management" Clicked="OnOderManagementClicked" IsEnabled="False" BackgroundColor="DarkRed" />
+                <Button x:Name="SalesAnalyticsButton" Text="Sales &amp; Analytics" Clicked="OnSalesandAnalyticsClicked" IsEnabled="False" BackgroundColor="DarkRed"/>
+            </VerticalStackLayout>
+        </ContentView>
+
+        <!-- Right Sidebar -->
+        <VerticalStackLayout Grid.Column="2" Spacing="15" Padding="10" BackgroundColor="Black">
+            <Label Text="Navigation" FontAttributes="Bold" FontSize="23" HorizontalOptions="Center" Margin="0,30,0,30" TextColor="Yellow"/>
+            <Button x:Name="CartButton" Text="Shopping Cart" Clicked="OnCartClicked" IsEnabled="False" BackgroundColor="Green"/>
+            <Button x:Name="WishlistButton" Text="Wishlist" Clicked="OnWishlistClicked" IsEnabled="False" BackgroundColor="Green"/>
+            <Button x:Name="OrdersButton" Text="Orders Summary" Clicked="OnOrdersClicked" IsEnabled="False" BackgroundColor="Green"/>
+            <Button x:Name="ReturnsButton" Text="Return Items" Clicked="OnReturnsClicked" IsEnabled="False" BackgroundColor="Green"/>
+            <Button x:Name="UserProfileButton" Text="User Profile" Clicked="OnUserprofileClicked" IsEnabled="False" BackgroundColor="Green"/>
+            <Button x:Name="SupportandHelpButton" Text="Support &amp; Help" Clicked="OnsupporthelpClicked" IsEnabled="False" BackgroundColor="Green"/>
+            <Button x:Name="CheckoutOrdersButton" Text="Checkout Orders" Clicked="OnCheckoutOrdersClicked" IsEnabled="False" BackgroundColor="Green"/>
+            <Button x:Name="LogoutButton" Text="Log Out" Clicked="OnLogoutClicked" IsEnabled="False" BackgroundColor="Green"/>
+        </VerticalStackLayout>
+
+    </Grid>
+</ContentPage>

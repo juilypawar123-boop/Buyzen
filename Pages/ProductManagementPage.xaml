@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Buyzen.Pages.ProductManagementPage"
+             Title="Product Management"
+             BackgroundColor="#121212"
+             Padding="10">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="20">
+
+            <!-- Header -->
+            <Label Text="Product Management"
+                   FontSize="26"
+                   FontAttributes="Bold"
+                   TextColor="White"
+                   HorizontalOptions="Center"/>
+
+            <!-- Bulk Actions -->
+            <Frame BackgroundColor="#1F1F1F" CornerRadius="16" Padding="15">
+                <HorizontalStackLayout Spacing="10">
+                    <Button Text="Add Product"
+                            BackgroundColor="#28A745"
+                            TextColor="White"
+                            Clicked="OnAddProductClicked"/>
+
+                    <Button Text="Disable Listing"
+                            BackgroundColor="#DC3545"
+                            TextColor="White"
+                            Clicked="OnDisableProductClicked"/>
+
+                    <Button Text="Update Stock"
+                            BackgroundColor="#FFC107"
+                            TextColor="Black"
+                            Clicked="OnUpdateStockClicked"/>
+                </HorizontalStackLayout>
+            </Frame>
+
+            <!-- Product List -->
+            <Frame BackgroundColor="#1F1F1F" CornerRadius="16" Padding="15">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Products"
+                           FontAttributes="Bold"
+                           TextColor="White"/>
+
+                    <CollectionView x:Name="ProductsView" HeightRequest="350">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame BackgroundColor="#2A2A2A"
+                                       CornerRadius="12"
+                                       Padding="10"
+                                       Margin="5">
+
+                                    <VerticalStackLayout Spacing="5">
+                                        <Label Text="{Binding Name}"
+                                               FontAttributes="Bold"
+                                               TextColor="White"/>
+
+                                        <Label Text="{Binding Price, StringFormat='Price: ${0:F2}'}"
+                                               TextColor="#4FC3F7"/>
+
+                                        <Label Text="{Binding StockStatus}"
+                                               TextColor="{Binding StockColor}"
+                                               FontAttributes="Bold"/>
+
+                                        <Label Text="{Binding IsVisible, StringFormat='Visible: {0}'}"
+                                               TextColor="LightGray"/>
+                                    </VerticalStackLayout>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Product Editor -->
+            <Frame BackgroundColor="#1F1F1F" CornerRadius="16" Padding="15">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Edit Product"
+                           FontAttributes="Bold"
+                           TextColor="White"/>
+
+                    <Entry x:Name="ProductNameEntry"
+                           Placeholder="Product Name"
+                           TextColor="White"/>
+
+                    <Entry x:Name="PriceEntry"
+                           Placeholder="Price"
+                           Keyboard="Numeric"
+                           TextColor="White"/>
+
+                    <Entry x:Name="StockEntry"
+                           Placeholder="Stock Quantity"
+                           Keyboard="Numeric"
+                           TextColor="White"/>
+
+                    <Switch x:Name="VisibilitySwitch"/>
+                    <Label Text="Product Visibility"
+                           TextColor="White"/>
+
+                    <Button Text="Save Changes"
+                            BackgroundColor="#0078D4"
+                            TextColor="White"
+                            Clicked="OnSaveProductClicked"/>
+                </VerticalStackLayout>
+            </Frame>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

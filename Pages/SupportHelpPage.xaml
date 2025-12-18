@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Buyzen.Pages.SupportHelpPage"
+             Title="Support &amp; Help"
+             BackgroundColor="Green"
+             Padding="10">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="20">
+
+            <!-- FAQ Search -->
+            <Frame BackgroundColor="White" CornerRadius="16" Padding="15" Margin="20,15,40,10">
+                <Entry x:Name="FaqSearchEntry"
+                       Placeholder="Search FAQs..."
+                       TextChanged="OnFaqSearchChanged"/>
+            </Frame>
+
+            <!-- Issue Input -->
+            <Frame BackgroundColor="White" CornerRadius="16" Padding="15" Margin="20,15,40,10">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Issue Category" FontAttributes="Bold"/>
+                    <Picker x:Name="IssueCategoryPicker" Title="Select category">
+                        <Picker.Items>
+                            <x:String>Account</x:String>
+                            <x:String>Payments</x:String>
+                            <x:String>Medication</x:String>
+                            <x:String>App Performance</x:String>
+                            <x:String>Other</x:String>
+                        </Picker.Items>
+                    </Picker>
+
+                    <Label Text="Issue Description" FontAttributes="Bold"/>
+                    <Editor x:Name="IssueDescriptionEditor"
+                            Placeholder="Write the issue description here"
+                            AutoSize="TextChanges"
+                            HeightRequest="80"/>
+
+                    <Button Text="Create Support Ticket" 
+                            BackgroundColor="#0078D4"
+                            TextColor="White"
+                            Clicked="OnCreateTicketClicked"
+                            HorizontalOptions="Center"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Ticket History -->
+            <Frame BackgroundColor="White" CornerRadius="16" Padding="15" Margin="20,15,40,10">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Ticket History" FontAttributes="Bold"/>
+                    <CollectionView x:Name="TicketHistoryView"
+                                    HeightRequest="300"
+                                    ItemsSource="{Binding Tickets}">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame Padding="10" CornerRadius="12" BackgroundColor="DarkRed" Margin="20,15,40,10">
+                                    <VerticalStackLayout>
+                                        <Label Text="{Binding Title}" FontAttributes="Bold"/>
+                                        <Label Text="{Binding Status}" FontSize="13"/>
+                                        <Label Text="{Binding Category}" FontSize="13"/>
+                                        <Label Text="{Binding Description}" FontSize="13"/>
+                                        <Label Text="{Binding CreatedAt, StringFormat='Created: {0:dd/MM/yyyy HH:mm}'}" FontSize="11" TextColor="Gray"/>
+                                    </VerticalStackLayout>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </VerticalStackLayout>
+            </Frame>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

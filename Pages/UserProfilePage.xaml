@@ -1,0 +1,64 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Buyzen.Pages.UserProfilePage"
+             Title="User Profile"
+             BackgroundColor="White">
+
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="18">
+
+
+            <Label Text="Account &amp; Preferences"
+                   FontSize="26"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   TextColor="#1A1A1A" />
+
+
+            <Frame CornerRadius="16" Padding="15" BackgroundColor="White" HasShadow="True" Margin="20,15,40,0" />
+            <VerticalStackLayout Spacing="10">
+                <Label Text="Address Book" FontAttributes="Bold" FontSize="18" Margin="20,15,40,0" />
+                <Label Text="Manage saved delivery and billing addresses" FontSize="14" TextColor="Gray" Margin="20,15,40,0"/>
+                <Button Text="Add Address" Clicked="OnAddAddressClicked" HorizontalOptions="Center"/>
+            </VerticalStackLayout>
+
+
+
+            <Frame CornerRadius="16" Padding="15" BackgroundColor="White" HasShadow="True" Margin="0,0,40,0" />
+            <VerticalStackLayout Spacing="10">
+                <Label Text="Payment Methods" FontAttributes="Bold" FontSize="18" Margin="20,15,40,0" />
+                <Label Text="Manage your saved cards and payment options" FontSize="14" TextColor="Gray" Margin="20,15,40,0" />
+                    <Button Text="Remove Payment Method" Clicked="OnRemovePaymentClicked" HorizontalOptions="Center"/>
+            </VerticalStackLayout>
+
+
+
+            <Frame CornerRadius="16" Padding="15" BackgroundColor="White" HasShadow="True" Margin="0,0,40,0" />
+            <VerticalStackLayout Spacing="10">
+                <Label Text="Communication Preferences" FontAttributes="Bold" FontSize="18" Margin="20,15,40,0"/>
+                <HorizontalStackLayout>
+                    <Switch x:Name="EmailSwitch" IsToggled="True" Margin="20,15,40,0" />
+                    <Label Text="Email Notifications" VerticalOptions="Center" Margin="20,15,40,0" />
+                </HorizontalStackLayout>
+                <HorizontalStackLayout>
+                    <Switch x:Name="SmsSwitch" Margin="20,15,40,0" />
+                    <Label Text="SMS Notifications" VerticalOptions="Center" Margin="20,15,40,0" />
+                </HorizontalStackLayout>
+                <Button Text="Update Preferences" Clicked="OnUpdatePreferencesClicked" HorizontalOptions="Center" />
+            </VerticalStackLayout>
+
+
+
+            <Frame CornerRadius="16" Padding="15" BackgroundColor="White" HasShadow="True" Margin="0,0,40,0" />
+            <VerticalStackLayout Spacing="10">
+                <Label Text="Account Security" FontAttributes="Bold" FontSize="18" Margin="20,15,40,0" />
+                <Label Text="Password and account safety" FontSize="14" TextColor="Gray" Margin="20,15,40,0" />
+                <Button Text="Change Password" Clicked="OnChangePasswordClicked" HorizontalOptions="Center" />
+            </VerticalStackLayout>
+
+
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

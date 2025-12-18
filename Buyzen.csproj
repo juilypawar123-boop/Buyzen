@@ -1,0 +1,140 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
+		<OutputType>Exe</OutputType>
+		<RootNamespace>Buyzen</RootNamespace>
+		<UseMaui>true</UseMaui>
+		<SingleProject>true</SingleProject>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+
+		<!-- Disable Resizetizer temporarily to avoid build lock issue -->
+		<UseMauiImageResizetizer>false</UseMauiImageResizetizer>
+
+		<!-- Display name -->
+		<ApplicationTitle>Buyzen</ApplicationTitle>
+
+		<!-- App Identifier -->
+		<ApplicationId>com.companyname.buyzen</ApplicationId>
+
+		<!-- Versions -->
+		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+		<ApplicationVersion>1</ApplicationVersion>
+
+		<SupportedOSPlatformVersion>10.0.17763.0</SupportedOSPlatformVersion>
+		<TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<!-- App Icon -->
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+
+		<!-- Splash Screen -->
+		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
+
+		<!-- Images -->
+		<MauiImage Include="Resources\Images\*" />
+		<MauiImage Update="Resources\Images\dotnet_bot.png" Resize="True" BaseSize="300,185" />
+
+		<!-- Custom Fonts -->
+		<MauiFont Include="Resources\Fonts\*" />
+
+		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
+		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
+		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Pages\LogInPage.xaml.cs">
+	    <DependentUpon>LoginPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\MainPage.xaml.cs">
+	    <DependentUpon>MainPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\CheckoutPage.xaml.cs">
+	    <DependentUpon>CheckoutPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\OrderSummaryPage.xaml.cs">
+	    <DependentUpon>OrderSummaryPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\ReturnsRefundsPage.xaml.cs">
+	    <DependentUpon>ReturnsRefundsPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\ShoppingCartPage.xaml.cs">
+	    <DependentUpon>ShoppingCartPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\WishlistPage.xaml.cs">
+	    <DependentUpon>WishlistPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\ProductManagementPage.xaml.cs">
+	    <DependentUpon>ProductManagementPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\OrderManagementPage.xaml.cs">
+	    <DependentUpon>OrderManagementPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\SalesAnalyticsPage.xaml.cs">
+	    <DependentUpon>SalesAnalyticsPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\SupportHelpPage.xaml.cs">
+	    <DependentUpon>SupportHelpPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\UserProfilePage.xaml.cs">
+	    <DependentUpon>UserProfilePage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\ProductDetailPage.xaml.cs">
+	    <DependentUpon>ProductDetailPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\ProductDiscoveryPage.xaml.cs">
+	    <DependentUpon>ProductDiscoveryPage.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Pages\LoginPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\CheckoutPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\OrderSummaryPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\ReturnsRefundsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\ShoppingCartPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\WishlistPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\ProductManagementPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\OrderManagementPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\SalesAnalyticsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\SupportHelpPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\UserProfilePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\ProductDetailPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\ProductDiscoveryPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
+</Project>

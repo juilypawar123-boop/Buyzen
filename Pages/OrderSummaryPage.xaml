@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Buyzen.Pages.OrderSummaryPage"
+             Title="Order Summary"
+             BackgroundColor="#1B2631"
+             Padding="10">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="20">
+
+            <!-- Address Selection -->
+            <Frame BackgroundColor="#2C3E50" CornerRadius="16" Padding="15">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Delivery Address" FontAttributes="Bold" FontSize="16" TextColor="White"/>
+                    <Picker x:Name="AddressPicker" Title="Select Address" TextColor="White"/>
+                    <Button Text="Edit Address" BackgroundColor="#2980B9" TextColor="White" Clicked="OnEditAddressClicked"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Delivery Method -->
+            <Frame BackgroundColor="#34495E" CornerRadius="16" Padding="15">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Delivery Method" FontAttributes="Bold" FontSize="16" TextColor="White"/>
+                    <Picker x:Name="DeliveryMethodPicker" Title="Select Delivery Method" TextColor="White"/>
+                    <Button Text="Change Delivery Option" BackgroundColor="#2980B9" TextColor="White" Clicked="OnChangeDeliveryClicked"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Order Summary -->
+            <Frame BackgroundColor="#2C3E50" CornerRadius="16" Padding="15">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Order Summary" FontAttributes="Bold" FontSize="16" TextColor="White"/>
+                    <CollectionView x:Name="OrderItemsView" HeightRequest="200">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame BackgroundColor="#3A506B" CornerRadius="10" Padding="10" Margin="5">
+                                    <Label Text="{Binding}" TextColor="White"/>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+
+                    <Label x:Name="SubtotalLabel" TextColor="White" FontAttributes="Bold"/>
+                    <Label x:Name="TaxLabel" TextColor="White" FontAttributes="Bold"/>
+                    <Label x:Name="TotalLabel" TextColor="White" FontAttributes="Bold" FontSize="18"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Order Timeline -->
+            <Frame BackgroundColor="#34495E" CornerRadius="16" Padding="15">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Order Tracking Timeline" FontAttributes="Bold" FontSize="16" TextColor="White"/>
+                    <Label x:Name="OrderStatusLabel" Text="Order Placed" FontSize="14" TextColor="White"/>
+                    <ProgressBar x:Name="OrderProgressBar" Progress="0.33" BackgroundColor="#7F8C8D" ProgressColor="#27AE60"/>
+                    <Label x:Name="DeliveryETA" Text="Estimated Delivery: 3 days" FontSize="12" TextColor="#F1C40F"/>
+                    <Label x:Name="CarrierInfo" Text="Carrier: FastExpress" FontSize="12" TextColor="#F1C40F"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Action Buttons -->
+            <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
+                <Button Text="Refresh Status" BackgroundColor="#27AE60" TextColor="White" Clicked="OnRefreshStatusClicked"/>
+                <Button Text="Contact Support" BackgroundColor="#2980B9" TextColor="White" Clicked="OnContactSupportClicked"/>
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
+                <Button Text="Download Invoice" BackgroundColor="#8E44AD" TextColor="White" Clicked="OnDownloadInvoiceClicked"/>
+                <Button Text="Report Issue" BackgroundColor="#E74C3C" TextColor="White" Clicked="OnReportIssueClicked"/>
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
+                <Button Text="Place Order" BackgroundColor="#27AE60" TextColor="White" Clicked="OnPlaceOrderClicked"/>
+                <Button Text="Cancel Checkout" BackgroundColor="#E74C3C" TextColor="White" Clicked="OnCancelCheckoutClicked"/>
+            </HorizontalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

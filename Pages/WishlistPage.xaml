@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Buyzen.Pages.WishlistPage"
+             Title="Wishlist"
+             BackgroundColor="#1A1F1A"
+             Padding="10">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="20">
+
+            <!-- Page Header -->
+            <Label Text="My Wishlist"
+                   FontSize="28"
+                   FontAttributes="Bold"
+                   TextColor="#FFD700"
+                   HorizontalOptions="Center"/>
+
+            <Label Text="Saved items for later. Keep track of price changes and stock updates!"
+                   FontSize="16"
+                   TextColor="White"
+                   HorizontalOptions="Center"
+                   HorizontalTextAlignment="Center"/>
+
+            <!-- Wishlist Items Grid -->
+            <Grid Padding="10">
+                <CollectionView
+                    x:Name="WishlistView"
+                    ItemsLayout="VerticalGrid,2"
+                    SelectionMode="None">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame BackgroundColor="#2C3E2F"
+                                   CornerRadius="16"
+                                   Padding="10"
+                                   Margin="5"
+                                   HasShadow="True">
+                                <VerticalStackLayout Spacing="8">
+                                    <Image Source="{Binding ImageUrl}"
+                                           HeightRequest="120"
+                                           Aspect="AspectFill"
+                                           HorizontalOptions="Center"/>
+                                    <Label Text="{Binding Name}"
+                                           TextColor="White"
+                                           FontAttributes="Bold"
+                                           FontSize="16"/>
+                                    <Label Text="{Binding Price, StringFormat='Price: ${0:F2}'}"
+                                           TextColor="#00FF00"
+                                           FontAttributes="Bold"/>
+                                    <Label Text="Stock: Available"
+                                           TextColor="#FFA500"
+                                           FontSize="12"/>
+
+                                    <!-- Action Buttons -->
+                                    <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
+                                        <Button Text="Move to Cart"
+                                                BackgroundColor="#28A745"
+                                                TextColor="White"
+                                                CornerRadius="12"
+                                                CommandParameter="{Binding}"
+                                                Clicked="OnMoveToCartClicked"/>
+                                        <Button Text="Remove"
+                                                BackgroundColor="#DC3545"
+                                                TextColor="White"
+                                                CornerRadius="12"
+                                                CommandParameter="{Binding}"
+                                                Clicked="OnRemoveFromWishlistClicked"/>
+                                    </HorizontalStackLayout>
+                                </VerticalStackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Grid>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
